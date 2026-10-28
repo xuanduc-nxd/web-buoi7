@@ -1,0 +1,8 @@
+/vendor/
+/.idea/
+/.vscode/
+/.env
+/config/database.local.php
+/tai_lieu/
+*.log
+.DS_Store

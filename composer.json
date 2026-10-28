@@ -1,0 +1,16 @@
+{
+  "name": "vku/vkushop-buoi07",
+  "description": "Buoi 07 - Authentication, Session, Authorization",
+  "type": "project",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
