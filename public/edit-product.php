@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../includes/bootstrap.php';
-// TODO B7-E1: gọi requireAdmin() tại đây, bảo vệ cả GET và POST.
+requireAdmin();
 $id = positive_id($_GET['id'] ?? null);
 if (!$id) page_not_found('ID sản phẩm không hợp lệ.');
 $stmt = $pdo->prepare('SELECT * FROM products WHERE id = :id');
@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require __DIR__ . '/../includes/header.php';
 ?>
 <div class="page-head"><h1>Sửa sản phẩm #<?= $id ?></h1><a class="btn btn-outline" href="products.php">Quay lại</a></div>
-<section class="card form-card"><form method="post" action="edit-product.php?id=<?= $id ?>
-<input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">">
+<section class="card form-card"><form method="post" action="edit-product.php?id=<?= $id ?>">
+<input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
  <div class="field"><label for="name">Tên sản phẩm</label><input id="name" name="name" value="<?= e($data['name']) ?>" maxlength="150" required><p class="field-error"><?= e($errors['name'] ?? '') ?></p></div>
  <div class="field"><label for="price">Giá (đ)</label><input id="price" name="price" value="<?= e($data['price']) ?>" inputmode="numeric" required><p class="field-error"><?= e($errors['price'] ?? '') ?></p></div>
  <div class="field"><label for="stock">Tồn kho</label><input id="stock" name="stock" value="<?= e($data['stock']) ?>" inputmode="numeric" required><p class="field-error"><?= e($errors['stock'] ?? '') ?></p></div>

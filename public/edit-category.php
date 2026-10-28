@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../includes/bootstrap.php';
-// TODO B7-E1: gọi requireAdmin() tại đây, bảo vệ cả GET và POST.
+requireAdmin();
 $id = positive_id($_GET['id'] ?? null);
 if (!$id) page_not_found('ID danh mục không hợp lệ.');
 $stmt = $pdo->prepare('SELECT * FROM categories WHERE id = :id');
@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require __DIR__ . '/../includes/header.php';
 ?>
 <div class="page-head"><h1>Sửa danh mục #<?= $id ?></h1><a class="btn btn-outline" href="categories.php">Quay lại</a></div>
-<section class="card form-card"><form method="post" action="edit-category.php?id=<?= $id ?>
-<input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">">
+<section class="card form-card"><form method="post" action="edit-category.php?id=<?= $id ?>">
+<input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
  <div class="field"><label for="name">Tên danh mục</label><input id="name" name="name" value="<?= e($name) ?>" maxlength="100" required><p class="field-error"><?= e($errors['name'] ?? '') ?></p></div>
  <div class="field"><label for="slug">Slug</label><input id="slug" name="slug" value="<?= e($slug) ?>" maxlength="120" required><p class="field-error"><?= e($errors['slug'] ?? '') ?></p></div>
  <button class="btn" type="submit">Cập nhật danh mục</button>

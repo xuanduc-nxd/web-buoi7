@@ -4,5 +4,6 @@
 /.env
 /config/database.local.php
 /tai_lieu/
+/test-results/
 *.log
 .DS_Store

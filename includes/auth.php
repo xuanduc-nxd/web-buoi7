@@ -9,12 +9,7 @@ function isLoggedIn(): bool
 
 function isAdmin(): bool
 {
-    // TODO B7-A1: xác định user đã login và role trong Session là admin.
-
-    if(isLoggedIn() && isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
-        return true;
-    }
-    return false;
+    return isLoggedIn() && ($_SESSION['role'] ?? null) === 'admin';
 }
 
 function requireLogin(string $loginUrl = 'login.php'): void
@@ -25,10 +20,7 @@ function requireLogin(string $loginUrl = 'login.php'): void
 function requireAdmin(string $loginUrl = 'login.php'): void
 {
     requireLogin($loginUrl);
-    // TODO B7-A2: nếu không phải Admin, trả HTTP 403 và dừng.
-    // Mặc định chặn tất cả để không vô tình mở quyền.
-
-    if(!isAdmin()){
+    if (!isAdmin()) {
         http_response_code(403);
         exit('Chỉ Admin mới được phép truy cập.');
     }

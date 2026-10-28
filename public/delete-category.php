@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../includes/bootstrap.php';
-// TODO B7-E1: gọi requireAdmin() tại đây, bảo vệ cả GET và POST.
+requireAdmin();
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     header('Allow: POST');

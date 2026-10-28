@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../includes/bootstrap.php';
-// TODO B7-E1: gọi requireAdmin() tại đây, bảo vệ cả GET và POST.
+requireAdmin();
 $pageTitle = 'Thêm sản phẩm';
 $errors = [];
 $data = ['name' => '', 'price' => '', 'stock' => '', 'category_id' => ''];
